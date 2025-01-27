@@ -4,7 +4,7 @@ digit = 2
 digit_1 = 8
 
 
-def minimum(number, number_1) -> int:
+def minimum(number: int, number_1: int) -> int:
   """
   Returns the smaller of numbers.
   """
@@ -37,7 +37,7 @@ point2 = -5
 point3 = -10
 
 
-def distance(x1, y1, x2, y2) -> float:
+def distance(x1: float, y1: float, x2: float, y2: float) -> float:
   """
   Calculates the distance between two points in a 2D plane.
   """
@@ -53,10 +53,13 @@ def determine_prime_number(number: int) -> bool:
   """
   This function determines prime number.
   """
-  for el in range(2, number // 2 + 1):
+  counter = 0
+  for el in range(1, number + 1):
     if number % el == 0:
+        counter += 1
+  if counter > 2:
       return "NO"
-    return "YES"
+  return "YES"
 
 number = int(input("number:"))
 print(f"number {number}: {determine_prime_number(number=number)}")
@@ -87,7 +90,7 @@ print(f"fibonacci: {result}")
 
 # Task6
 # O(1)
-def closest_mod_5(number) -> int:
+def closest_mod_5(number: int) -> int:
   """
   :param number: An integer.
   :return: The smallest integer result that is greater or equal to number, and it is divisible by 5.
