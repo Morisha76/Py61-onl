@@ -1,7 +1,7 @@
 # Task8
 # O(1)
 class MyClass:
-    def __init__(self, value1, value2):
+    def __init__(self, value1:int, value2:int):
         self.value1 = value1
         self.value2 = value2
 
@@ -9,7 +9,7 @@ class MyClass:
         print(self.value1)
         print(self.value2)
 
-    def change_values(self, new_value1, new_value2):
+    def change_values(self, new_value1:int, new_value2:int):
         self.value1 = new_value1
         self.value2 = new_value2
         print("Values were changed")
@@ -31,7 +31,7 @@ object.find_max()
 # Task2
 # O(N)
 class DecadeCounter:
-    def __init__(self, min_value=0, max_value=100, initial_value=0):
+    def __init__(self, min_value:int = 0, max_value:int = 100, initial_value:int = 0):
         self.min_value = min_value
         self.max_value = max_value
         self.initial_value = initial_value
@@ -79,18 +79,18 @@ if __name__ == "__main__":
 # Task3
 # O(N)
 class Store:
-    def __init__(self, name):
+    def __init__(self, name:str):
         self.name = name
         self.products = {}
 
-    def add_product(self, product_name, quantity):
+    def add_product(self, product_name:str, quantity:int):
         if product_name in self.products:
             self.products[product_name] += quantity
         else:
             self.products[product_name] = quantity
         print(f"Added {quantity} units of '{product_name}' to the store.")
 
-    def remove_product(self, product_name, quantity):
+    def remove_product(self, product_name:str, quantity:int):
         if product_name not in self.products:
             raise ValueError(f"The product '{product_name}' not found in the store.")
 
@@ -102,7 +102,7 @@ class Store:
             del self.products[product_name]
         print(f"Removed {quantity} units of '{product_name}' from the store.")
 
-    def find_product(self, product_name):
+    def find_product(self, product_name:str):
         if product_name in self.products:
             return self.products[product_name]
         else:
