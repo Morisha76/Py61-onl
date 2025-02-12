@@ -270,7 +270,7 @@ import csv
 import os
 
 dirname_json = "JSON"
-filename_json = "json.file"
+filename_json = "file.json"
 encoding = "utf-8"
 mode_json = "r"
 json_filepath = os.path.join(dirname_json, filename_json)
@@ -280,28 +280,20 @@ with open(json_filepath, mode_json, encoding=encoding) as json_file:
 
 if data is not None:
     dirname_csv = "CSV"
-    filename_csv = "csv.file"
+    filename_csv = "file.csv"
     encoding = "utf-8"
     mode_csv = "w"
-    csv_filepath = os.path.join(dirname_csv, filename_csv.replace(".csv.file", ".json"))
+    csv_filepath = os.path.join(dirname_csv, filename_csv.replace(".csv", ".json"))
 
     with open(csv_filepath, mode_csv, newline='', encoding=encoding) as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=';')
 
-        header = ["personID"]
-        if data:
-            first_person_id = next(iter(data))
-            first_person_data = data[first_person_id]
-            for key in first_person_data.keys():
-                header.append("person" + key)
 
-            csv_writer.writerow(header)
-
-            for person_id, person_data in data.items():
-                row = [person_id]
-                for value in person_data.values():
-                    row.append(value)
-                csv_writer.writerow(row)
+        for person_id, person_data in data.items():
+            data_list = ["person"]
+            for value in person_data.values():
+                data_list.append(value)
+            csv_writer.writerow(data_list)
         else:
             print("json.file is empty.")
 
